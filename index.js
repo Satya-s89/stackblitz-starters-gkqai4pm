@@ -46,13 +46,17 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.sendFile(resolve(__dirname, 'pages/index.html'));
 });
+
+
 app.post('/students/above-threshold',(req, res) => {
   try{
     const {threshold} = req.body;
     if(!threshold){
       return res.status(500).send({msg:"please provide threshold"})
     }
-    const studentData = data.filter((data)=>{
+    const studentData = data.map((ele) => {
+      return {name: ele.name,total: ele.total};
+    }).filter((data)=>{
       return data.total > threshold;
     })
 
@@ -64,8 +68,6 @@ app.post('/students/above-threshold',(req, res) => {
 
   }
 })
-
-
 
 
 app.listen(port, () => {
