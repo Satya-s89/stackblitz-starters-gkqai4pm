@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "stackblitz-starters-gkqai4pm",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
